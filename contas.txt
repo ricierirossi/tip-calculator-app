@@ -1,0 +1,2 @@
+tip amount = (bill * tip) / people
+total = (bill / people) + tip amount
