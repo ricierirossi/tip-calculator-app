@@ -12,52 +12,59 @@
 </head>
 <body>
     <div class="container">
-        <div class="title title-top">Spli</div>
-        <div class="title title-bottom">tter</div>
-        <div class="calculator">
-            <div class="left">
-                <div class="bill-section">
-                    <div class="bill">Bill</div>
-                    <input class="field" type="number" placeholder="0"></input>
+        <img class='title' src="./images/logo.svg"></img>
+        <div class="calculator-container">
+            <div class="calculator">
+                <div class="left">
+                    <div class="bill-section">
+                        <label for='bill-value' class="bill">Bill</label>
+                        <div class="icon">
+                            <input name='bill-value' class="field bill-icon" type="number" placeholder="0"></input>
+                            <img src="./images/icon-dollar.svg"" class="icon-dollar" width="13" height="16"></img>
+                        </div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="select-tip">Select Tip %</div>
+                        <div class="tip">
+                            <div class="percentage percentage-unselected" perc="5" onclick="resetCustom(); calculus();">5%</div>
+                            <div class="percentage percentage-unselected" perc="10" onclick="resetCustom()">10%</div>
+                            <div class="percentage percentage-unselected" perc="15" onclick="resetCustom()">15%</div>
+                            <div class="percentage percentage-unselected" perc="25" onclick="resetCustom()">25%</div>
+                            <div class="percentage percentage-unselected" perc="50" onclick="resetCustom()">50%</div>
+                            <input name ='custom-tip' class="custom" type="number" placeholder="Custom"></input>
+                        </div>
+                    </div>
+                    <div class="number-section">
+                        <label for='number-of-people' class="number-people">Number of People</label>       
+                        <div class="icon"> <!-- relativo-->
+                            <input name='number-of-people' class="field people-icon" type="number" placeholder="0"></input> 
+                            <img src="./images/icon-person.svg"" class="icon-people" width="13" height="16"></img> <!-- absoluta-->
+                        </div>
+                    </div>                
                 </div>
-                <div class="tip-section">
-                    <div class="select-tip">Select Tip %</div>
-                    <div class="tip">
-                        <div class="percentage">5%</div>
-                        <div class="percentage">10%</div>
-                        <div class="percentage">15%</div>
-                        <div class="percentage">25%</div>
-                        <div class="percentage">50%</div>
-                        <input class="percentage custom" type="number" placeholder="Custom"></input>
+                <div class="right">
+                    <div class="right-top">
+                        <div class="result-top">
+                            <div class="tip-amount">Tip Amount</div>
+                            <div class="person">/ person</div>
+                        </div>
+                        <div class="result"><span id="total-amount"></span></div>
+                    </div>
+                    <div></div>
+                    <div class="right-bottom">
+                        <div class="result-bottom">
+                            <div class="total">Total</div>
+                            <div class="person">/ person</div>
+                        </div>
+                        <div class="result"><span id="total-person"></span></div>
+                    </div>
+                    <div class="reset" onclick='reset()'>
+                        <div>Reset</div>
                     </div>
                 </div>
-                <div class="number-section">
-                    <div class="number-people">Number of People</div>       
-                    <input class="field" type="number" placeholder="0"></input>
-                </div>                
-            </div>
-            <div class="right">
-                <div class="right-top">
-                    <div class="result-top">
-                        <div class="tip-amount">Tip Amount</div>
-                        <div class="person">/ person</div>
-                    </div>
-                    <div class="result">$0.00</div>
-                </div>
-                <div></div>
-                <div class="right-bottom">
-                    <div class="result-bottom">
-                        <div class="total">Total</div>
-                        <div class="person">/ person</div>
-                    </div>
-                    <div class="result">$0.00</div>
-                </div>
-                <div class="reset">
-                    <div>Reset</div>
-                </div>
-            </div>
+            </div>            
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="calculo.js"></script>
 </body>
 </html>

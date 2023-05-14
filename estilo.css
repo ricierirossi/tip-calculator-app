@@ -27,20 +27,7 @@ body{
 }
 
 .title {
-    margin: 0;
-    align-self: center;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 10px;
-    color: var(--very-dark);
-}
-
-.title-top {
-    padding-top: 70px;
-}
-
-.title-bottom {
-    padding-bottom: 50px;
+    margin: 80px 0 50px 0;
 }
 
 .calculator {
@@ -86,6 +73,11 @@ body{
 input {
     font-size: 18px;
     font-weight: 700;
+    outline-color: var(--strong-cyan);
+}
+
+input:hover {
+    cursor: pointer;
 }
 
 input::placeholder {
@@ -102,6 +94,11 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;    
 }
 
+input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield; 
+ }
+
 .field {
     background-color: var(--very-light-grayish);  
     outline-color: var(--strong-cyan);
@@ -115,26 +112,52 @@ input[type=number]::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+.icon {
+    position: relative;
+}
+
+.icon .icon-dollar {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+
+.icon .icon-people {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+
 .percentage {
     text-align: center;
     padding: 5px;  
     border-radius: 5px;
-    background-color: var(--very-dark);
-    color: white;
     cursor: pointer;
 }
 
+.percentage-selected {
+    background-color: var(--strong-cyan);
+    color: var(--very-dark)
+}
+
+.percentage-unselected {
+    background-color: var(--very-dark);
+    color: white;
+}
+
+
 .custom {
     background-color: var(--very-light-grayish);
+    border-radius: 5px;
     color: var(--very-dark);
     height: 24px;
     border: none;
-    padding-right: 10px;
+    padding: 5px;
     text-align: right;
 }
 
 .custom::placeholder {
-    color: var(--very-dark);
+    color: var(--graysh-cyan);
     font-weight: 700;  
 }
 
@@ -184,4 +207,16 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
+    border-radius: 5px;
 }
+
+.reset:hover{
+    background-color: var(--light-grayish);
+}
+
+.reset:active {
+    background-color: var(--strong-cyan);
+}
+
+
+
