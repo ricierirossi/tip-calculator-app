@@ -1,2 +1,2 @@
-tip amount = (bill * tip) / people
-total = (bill / people) + tip amount
+tipAmount = (bill * tip) / people
+total = (bill / people) + tipAmount

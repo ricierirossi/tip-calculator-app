@@ -1,74 +1,102 @@
-let tipAmount
-let total 
-let bill 
-let customTip
-let tip 
-let numberOfPeople
-let clickedButtonValue
+let bill = 0
+let people = 0
+let custom = 0
+let tipButton = 0
+let tipAmount = 0
+let total= 0
+let tip
+//
 
-// tipAmount = (bill * tip) / numberOfPeople
-// total = (bill / numberOfPeople) + tipAmount
+const showValues = () => {
+    document.getElementById('total-amount').innerHTML = `$ ${tipAmount.toFixed(2)}`
+    document.getElementById('total-person').innerHTML = `$ ${total.toFixed(2)}`
+}
+document.addEventListener("DOMContentLoaded", showValues)
+//
 
-// Tip selection
-document.addEventListener("DOMContentLoaded", changing);
-function changing () {
+const calculus = () => {
 
-    const percentageButtons = document.querySelectorAll('.percentage')
+    bill = document.querySelector('input[name=bill-value]').value
+    people = document.querySelector('input[name=number-of-people]').value
+    custom = document.querySelector('input[name=custom-tip]').value
 
-    // let clickedButtonValue
+    if(document.querySelector('input[name=custom-tip]').value == '') {
+        tip = tipButton
+    } else {
+        tip = custom
+        const buttons = document.querySelectorAll('.percentage')
+        Array.from(buttons).forEach(button => {
+            button.classList.add('percentage-unselected')
+        }
+        )
+    }
 
-    percentageButtons.forEach( clickedButton => {
+    tipAmount = ((bill * tip) / people) / 100
+    total = (bill / people) + tipAmount
+
+    showValues()
+
+}
+//
+
+const resetCustom = () => {
+
+    custom = 0
+    document.querySelector('input[name=custom-tip]').value = ''
+
+}
+//
+
+const myInputs = document.querySelectorAll('input')
+Array.from(myInputs).forEach(myInput => {
+    myInput.addEventListener('change', calculus)
+})
+//
+
+const myButtons = document.querySelectorAll('.percentage')
+Array.from(myButtons).forEach(myButton => {
+    myButton.addEventListener('click', resetCustom)
+    myButton.addEventListener('click', () => tipButton = myButton.getAttribute('perc'))
+
+    myButtons.forEach(notClickedButtons => {
+        notClickedButtons.classList.remove('percentage-selected')
+        notClickedButtons.classList.add('percentage-unselected')
+    })
+     
+    myButtons.forEach(clickedButton => {
         clickedButton.addEventListener('click', function() {
-            percentageButtons.forEach(notClickedButtons => {    
+            myButtons.forEach(notClickedButtons => {
                 notClickedButtons.classList.remove('percentage-selected')
                 notClickedButtons.classList.add('percentage-unselected')
             })
-            clickedButton.classList.remove('percentage-unselected')
-            clickedButton.classList.add('percentage-selected')
-            clickedButtonValue = clickedButton.getAttribute('perc')
-            tip = clickedButtonValue            
+                clickedButton.classList.remove('percentage-unselected')
+                clickedButton.classList.add('percentage-selected')
         })
     })
-}
 
-// Calculus
-document.addEventListener("DOMContentLoaded", calculus);
+})
+//
 
-function calculus() {
-    const myInputs = document.querySelectorAll('input');
-    myInputs.forEach(myInput => 
-        myInput.addEventListener('change', () => {
-            
-            bill = document.querySelector('input[name="bill-value"]').value
-            numberOfPeople = document.querySelector('input[name="number-of-people"]').value
-            customTip = document.querySelector('input[name="custom-tip"]').value
-    
-            if(customTip != '') {
-                tip = customTip
-                changing()
+const clear = document.querySelector('.reset')
+clear.addEventListener('click', () => {
 
-            }
-    
-            tipAmount = (bill * tip) / numberOfPeople / 100
-            total = (bill / numberOfPeople) + tipAmount
-    
-            document.getElementById('total-amount').innerHTML = `$ ${tipAmount.toFixed(2)}`
-            document.getElementById('total-person').innerHTML = `$ ${total.toFixed(2)}`
-          })
-        )
-}
-
-
-// Reset
-function reset() {
     bill = 0
-    tip = 0
-    numberOfPeople = 0
-    customTip = document.querySelector('input[name="custom-tip"]').value = ''
-}
+    people = 0
+    custom = 0
+    tipButton = 0
+    document.querySelector('input[name=bill-value]').value = ''
+    document.querySelector('input[name=number-of-people]').value = ''
+    document.querySelector('input[name=custom-tip]').value = ''
 
-// Reset Custom
-function resetCustom() {
-    customTip = document.querySelector('input[name="custom-tip"]').value = ''
-    changing()
-}
+    const buttons = document.querySelectorAll('.percentage')
+        Array.from(buttons).forEach(button => {
+            button.classList.add('percentage-unselected')
+        }
+        )
+    
+
+})
+//
+
+
+
